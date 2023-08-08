@@ -1,31 +1,32 @@
-@charset "UFT-8";
+@charset "UTF-8";
 /*
 tudo em html é id e tudo em CSS # (só pode um elemento
 tudo em html é Class e tudo em CSS . (pode varios elementos)
 */
 @font-face {
   font-family: 'Doctor-Who';
-  src: url('../fontes/Doctor-Who.ttf') format('tryetype');
+  src: url('../fontes/Doctor-Who.ttf') format('tryentype');
   font-weight: normal;
-}
-:root{
-    --cor01:#2D3192;
-    --cor02:#3F4553;
-    --cor03:#32373B;
-    --cor04:#48494B;
-    --cor05:#1a5c37;
-    --cor06:#2D3192;
-    --font-padrao: 'Arial', 'verdana', 'helvetica', 'sans serif';
-    --font-Doctor-Who: 'Doctor-Who', 'cursive';
+  font-style: normal;
 }
 *{
   margin: 0px;
   padding-inline-start: 0px;
 }
+:root{
+    --cor01:#0A21A6;
+    --cor02:#0B1F8C;
+    --cor03:#0A2473;
+    --cor04:#0C2059;
+    --cor05:#1a5c37;
+    --cor06:#0E2440;
+  --font-padrao: 'Arial', 'verdana', 'helvetica', 'sans serif';
+  --font-DoctorWho:'Doctor-Who', 'cursive';
+}
 div.menu {
-    display:inline-table;
-    width: 2px;
-    height: 2px;    
+    display: inline-table;
+    width: 10px;
+    height: 10px;
 }
 body {
   font-family: var(--font-DoctorWho), helvetica, sans-serif;
@@ -293,9 +294,8 @@ div.video {
   background-color: var(--cor04);
   margin: auto;
   padding: 20px;
-  padding-bottom: 49%;
+  padding-bottom: 59%;
   position: relative;
-  text-align: center;
 }
 div.video > iframe { 
   position: absolute;
@@ -303,7 +303,6 @@ div.video > iframe {
   left: 5%;
   width: 90%;
   height: 90%;
-  text-align: center;
 }
 .btn{
   display: block;
