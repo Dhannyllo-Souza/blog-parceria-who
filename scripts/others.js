@@ -13,14 +13,6 @@ var temp11 = document.getElementById("temporada11");
 var temp12 = document.getElementById("temporada12");
 var temp13 = document.getElementById("temporada13");
 
-let showSerie = parametrosURL.get("dw");
-if (showSerie !== null && showSerie == "legendado"){
-	mudaDubLeg("leg");
-}
-if (showSerie !== null && showSerie == "dublado"){
-  	mudaDubLeg("dub");
-}
-
 
 
 function mudaDubLeg(idiom){
