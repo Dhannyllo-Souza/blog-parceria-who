@@ -10,12 +10,11 @@
 
     body {
       background-color: #0a101a;
-      background-image: url("imagens/logo.png");
+      background-image: url("HDspace.jpg");
       background-position: -25px -85px;
       background-repeat: no-repeat;
       background-size: cover;
       background-size: 110% auto;
-      overflow: hidden;
       font-family: inherit;
       word-break: break-word;
       color: #dcdcdc;
@@ -302,7 +301,7 @@
       font-size: 22px;
       cursor: pointer;
       color: #dcdcdc;
-      background-color: rgba(0, 0, 0, 0.6);
+      background-color: rgba(11, 28, 215, 0.59);
       border-bottom: solid 1px #cfcfcf;
     }
     .opcsss{
@@ -740,4 +739,4 @@ h6{
    .priv{
     visibility: hidden;
    }
-  }
+}

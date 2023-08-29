@@ -1,4 +1,4 @@
-/**
+/*
  * JLPlayer - Reprodutor de vídeos
  * @author Jeterson Lordano  -  jetersonlordano.com.br
  */
@@ -13,7 +13,7 @@ function playerExecute(){
     function jlPlayer(jlPlayerID) {
 
         // Elementos do player
-        var videoTarget, jlPlayerElem, jlPlayerVideo, jlPlayerLegends, jlPlayerLoader, jlPlayerControls, volTarget, rangeVol, sliderVol, sliderDrag, rangeSeeker, progressBuffer, progressVideo, currentTimeTooltip, trackCaption, activeCaption, cuesTrack, cuesText, activityMouseFull, activityMouseTime, systemTime, isTouch, elementFullScreen, played;
+        var videoTarget, jlPlayerElem, jlPlayerDocumento, jlPlayerImagem, jlPlayerJogo, jlPlayerAudio, jlPlayerVideo, jlPlayerLegends, jlPlayerLoader, jlPlayerControls, volTarget, rangeVol, sliderVol, sliderDrag, rangeSeeker, progressBuffer, progressVideo, currentTimeTooltip, trackCaption, activeCaption, cuesTrack, cuesText, activityMouseFull, activityMouseTime, systemTime, isTouch, elementFullScreen, played;
 
         // Ações da barra de controles
         var jlPlayerBtnPlay, jlPlayerProgress, jlPlayerTotalTime, jlPlayerBtnVol, jlPlayerSliderVol, jlPlayerBtnCC, jlPlayerBtnScreen, jlPlayerBtnPlayCenter;
@@ -57,20 +57,91 @@ function playerExecute(){
             videoTarget.insertAdjacentHTML('afterend', '<div id="' + jlPlayerID + '"></div>');
             document.getElementById(jlPlayerID).remove();
             jlPlayerElem = get(document, jlPlayerID);
+
             //videoTarget.removeAttribute('id');
             videoTarget.id = "playerPrincipal";
             videoTarget.className = "playerPcp";
             videoTarget.removeAttribute('class');
             jlPlayerElem.appendChild(videoTarget);
-            jlPlayerElem.setAttribute('class', 'jlplayer-video jlplayer-cursor-show jlplayer-fullscreen-off');
+            jlPlayerElem.setAttribute('class', 'jlplayer-video jlplayer-video jlplayer-cursor-show jlplayer-fullscreen-off');
             jlPlayerElem.innerHTML += jlPlayerContent;
 
+
+             // Cria os elementos do player
+        function construct() {
+            console.log("CONTRUTOR ATIVADO");
+            // Cria div container do player
+            audioTarget = get(document, jlPlayerID);
+            videoTarget.insertAdjacentHTML('afterend', '<div id="' + jlPlayerID + '"></div>');
+            document.getElementById(jlPlayerID).remove();
+            jlPlayerElem = get(document, jlPlayerID);
+
+            //videoTarget.removeAttribute('id');
+            audioTarget.id = "playerPrincipal";
+            audioTarget.className = "playerPcp";
+            audioTarget.removeAttribute('class');
+            jlPlayerElem.appendChild(audioTarget);
+            jlPlayerElem.setAttribute('class', 'jlplayer-audio jlplayer-audio jlplayer-cursor-show jlplayer-fullscreen-off');
+            jlPlayerElem.innerHTML += jlPlayerContent;
+
+
+            // Cria os elementos do player
+        function construct() {
+            console.log("CONTRUTOR ATIVADO");
+            // Cria div container do player
+            documentoTarget = get(document, jlPlayerID);
+            documentoTarget.insertAdjacentHTML('afterend', '<div id="' + jlPlayerID + '"></div>');
+            document.getElementById(jlPlayerID).remove();
+            jlPlayerElem = get(document, jlPlayerID);
+
+            //videoTarget.removeAttribute('id');
+            documentoTarget.id = "playerPrincipal";
+            documentoTarget.className = "playerPcp";
+            documentoTarget.removeAttribute('class');
+            jlPlayerElem.appendChild(documentoTarget);
+            jlPlayerElem.setAttribute('class', 'jlplayer-documento jlplayer-documento jlplayer-cursor-show jlplayer-fullscreen-off');
+            jlPlayerElem.innerHTML += jlPlayerContent;
+
+
+            // Cria os elementos do player
+        function construct() {
+            console.log("CONTRUTOR ATIVADO");
+            // Cria div container do player
+            imagemTarget = get(document, jlPlayerID);
+            imagemTarget.insertAdjacentHTML('afterend', '<div id="' + jlPlayerID + '"></div>');
+            document.getElementById(jlPlayerID).remove();
+            jlPlayerElem = get(document, jlPlayerID);
+
+            //videoTarget.removeAttribute('id');
+            imagemTarget.id = "playerPrincipal";
+            imagemTarget.className = "playerPcp";
+            imagemTarget.removeAttribute('class');
+            jlPlayerElem.appendChild(imagemTarget);
+            jlPlayerElem.setAttribute('class', 'jlplayer-imagem jlplayer-imagem jlplayer-cursor-show jlplayer-fullscreen-off');
+            jlPlayerElem.innerHTML += jlPlayerContent;
+
+                       // Cria os elementos do player
+        function construct() {
+            console.log("CONTRUTOR ATIVADO");
+            // Cria div container do player
+            jogoTarget = get(document, jlPlayerID);
+            jogoTarget.insertAdjacentHTML('afterend', '<div id="' + jlPlayerID + '"></div>');
+            document.getElementById(jlPlayerID).remove();
+            jlPlayerElem = get(document, jlPlayerID);
+
+            //videoTarget.removeAttribute('id');
+            jogoTarget.id = "playerPrincipal";
+            jogoTarget.className = "playerPcp";
+            jogoTarget.removeAttribute('class');
+            jlPlayerElem.appendChild(jogoTarget);
+            jlPlayerElem.setAttribute('class', 'jlplayer-jogo jlplayer-jogo jlplayer-cursor-show jlplayer-fullscreen-off');
+            jlPlayerElem.innerHTML += jlPlayerContent;
             /**
              * Elementos do player
              */
 
             // Elemento vídeo do player
-            jlPlayerVideo = get(jlPlayerElem, 'video', 'tag');
+            jlPlayerVideo = get(jlPlayerElem, 'audio','video', 'documento', 'imagem', 'jogo', 'tag');
             // Loader
             jlPlayerLoader = get(jlPlayerElem, 'jlplayer-loader', 'class');
 
@@ -150,16 +221,44 @@ function playerExecute(){
             handler(jlPlayerVideo, 'waiting canplay playing play loadstart seeked', videoLoader, !0);
             handler(jlPlayerVideo, 'ended', restartVideo, !0);
 
+            handler(jlPlayerAudio, 'canplay', canplay, !0);
+            handler(jlPlayerAudio, 'timeupdate', updateTimer, !0);
+            handler(jlPlayerAudio, 'waiting canplay playing play loadstart seeked', AudioLoader, !0);
+            handler(jlPlayerAudio, 'ended', restartAudio, !0);
+
+            handler(jlPlayerAudio, 'canplay', canplay, !0);
+            handler(jlPlayerAudio, 'timeupdate', updateTimer, !0);
+            handler(jlPlayerAudio, 'waiting canplay playing play loadstart seeked', DocumentoLoader, !0);
+            handler(jlPlayerAudio, 'ended', restartDocumento, !0);
+
+            handler(jlPlayerAudio, 'canplay', canplay, !0);
+            handler(jlPlayerAudio, 'timeupdate', updateTimer, !0);
+            handler(jlPlayerAudio, 'waiting canplay playing play loadstart seeked', ImagemLoader, !0);
+            handler(jlPlayerAudio, 'ended', restartImagem, !0);
             autoCorretor();
 
+            handler(jlPlayerAudio, 'canplay', canplay, !0);
+            handler(jlPlayerAudio, 'timeupdate', updateTimer, !0);
+            handler(jlPlayerAudio, 'waiting canplay playing play loadstart seeked', JogoLoader, !0);
+            handler(jlPlayerAudio, 'ended', restartJogo, !0);
             // Dispara se ouver erro
-            handler(jlPlayerVideo, 'error', videoError, !0);
+            handler(jlPlayerVideo, 'error' videoError, !0);
+            // Dispara se ouver erro
+            handler(jlPlayerAudio, 'error' AudioError, !0);
+            // Dispara se ouver erro
+            handler(jlPlayerAudio, 'error' documentoError, !0);
+            // Dispara se ouver erro
+            handler(jlPlayerAudio, 'error' ImagemLoaderError, !0);
+            // Dispara se ouver erro
+            handler(jlPlayerAudio, 'error' JogoError, !0);
 
             // Atividade do mouse
             handler(jlPlayerElem, 'mousemove', checkMouseActivity, !0);
             activityMouseFull = false;
 
             handler(jlPlayerVideo, 'progress', progressBuffering, !0);
+            activityMouseFull = false;
+
         }
 
         // Verifica a atividade do mouse em fullscreen para esconder a barra de controles
@@ -178,10 +277,26 @@ function playerExecute(){
         function progressBuffering() {
 
             var d = jlPlayerVideo.duration,
-                c = jlPlayerVideo.currentTime,
+                c = jlPlayerVideo.currentTime, 
                 buffer = jlPlayerVideo.buffered,
                 bufferW = 0;
 
+            var d = jlPlayerAudio.duration.
+                c = jlPlayerAudio.currentTime,
+                buffer = jlPlayerAudio.buffered,
+                bufferW = 0;
+            var d = jlPlayerDocumento.duration.
+                c = jlPlayerDocumento.currentTime,
+                buffer = jlPlayerDocumento.buffered,
+                bufferW = 0;
+            var d = jlPlayerImagem.duration.
+                c = jlPlayerImagem.currentTime,
+                buffer = jlPlayerImagem.buffered,
+                bufferW = 0;
+            var d = jlPlayerJogo.duration.
+                c = jlPlayerJogo.currentTime,
+                buffer = jlPlayerJogo.buffered,
+                bufferW = 0;
             if (d > 0) {
                 for (var i = 0; i < buffer.length; i++) {
                     if (buffer.start(buffer.length - 1 - i) < c) {
@@ -199,12 +314,40 @@ function playerExecute(){
             var h = Math.floor(jlPlayerVideo.currentTime / 3600),
                 m = Math.floor(jlPlayerVideo.currentTime / 60),
                 s = Math.floor(((jlPlayerVideo.currentTime / 60) % 1) * 60);
+                
+            //Duração total do audio
+            var h = Math.floor(jlPlayerAudio.currentTime / 3600),
+            m = Math.floor(jlPlayerAudio.currentTime / 60),
+            s = Math.floor(((jlPlayerAudio.currentTime / 60) % 1) * 60);
+
+            //Duração total do documento
+            var h = Math.floor(jlPlayerDocumento.currentTime / 3600),
+            m = Math.floor(jlPlayerDocumento.currentTime / 60),
+            s = Math.floor(((jlPlayerDocumento.currentTime / 60) % 1) * 60);
+
+            //Duração total do imagem
+            var h = Math.floor(jlPlayerImagem.currentTime / 3600),
+            m = Math.floor(jlPlayerImagem.currentTime / 60),
+            s = Math.floor(((jlPlayerImagem.currentTime / 60) % 1) * 60);
+
+            //Duração total do jogo
+            var h = Math.floor(jlPlayerJogo.currentTime / 3600),
+            m = Math.floor(jlPlayerJogo.currentTime / 60),
+            s = Math.floor(((jlPlayerJogo.currentTime / 60) % 1) * 60);
 
             // Usa o metodo convertTimer para setar a duração do vídeo
             jlPlayerTotalTime.textContent = convertTimer(h, m, s);
 
 
             var pctSeek = (jlPlayerVideo.currentTime / jlPlayerVideo.duration) * 100;
+
+            var pctSeek = (jlPlayerAudio.currentTime / jlPlayerAudio.duration) * 100;
+            
+            var pctSeek = (jlPlayerDocumento.currentTime / jlPlayerDocumento.duration) * 100;
+
+            var pctSeek = (jlPlayerImagem.currentTime / jlPlayerImagem.duration) * 100;
+
+            var pctSeek = (jlPlayerJogo.currentTime / jlPlayerJogo.duration) * 100;
 
             if (!sliderDrag) {
                 progressVideo.style.width = pctSeek + '%';
@@ -287,7 +430,41 @@ function playerExecute(){
                 if (isTouch) {
                     handler(jlPlayerVideo, 'click', playVideo, !1);
                 }
+                
+            if (jlPlayerVideo.preload == 'none') {
+                // Eventos de player e pause
+                handler(jlPlayerBtnPlay, 'click', playAudio, !0);
+                handler(jlPlayerBtnPlayCenter, 'click', playAudio, !0);
+                handler(jlPlayerAudio, 'click', playAudio, !0);
+                if (isTouch) {
+                    handler(jlPlayerAudio, 'click', playAudio, !1);
+                }
+
+                if (jlPlayerVideo.preload == 'none') {
+                    // Eventos de player e pause
+                    handler(jlPlayerBtnPlay, 'click', playDocumento, !0);
+                    handler(jlPlayerBtnPlayCenter, 'click', playDocumento, !0);
+                    handler(jlPlayerDocumento, 'click', playDocumento, !0);
+                    if (isTouch) {
+                        handler(jlPlayerDocumento, 'click', playDocumento, !1);
             }
+            
+            if (jlPlayerVideo.preload == 'none') {
+                // Eventos de player e pause
+                handler(jlPlayerBtnPlay, 'click', playImagem, !0);
+                handler(jlPlayerBtnPlayCenter, 'click', playImagem, !0);
+                handler(jlPlayerImagem, 'click', playImagem, !0);
+                if (isTouch) {
+                    handler(jlPlayerImagem, 'click', playImagem, !1);
+        }
+        if (jlPlayerVideo.preload == 'none') {
+            // Eventos de player e pause
+            handler(jlPlayerBtnPlay, 'click', playJogo, !0);
+            handler(jlPlayerBtnPlayCenter, 'click', playJogo, !0);
+            handler(jlPlayerJogo, 'click', playJogo, !0);
+            if (isTouch) {
+                handler(jlPlayerJogo, 'click', playJogo, !1);
+    }
         }
 
         // Converte o tempo e retorna no formato de hh:mm:ss
@@ -360,14 +537,76 @@ function playerExecute(){
             function updateVolume() {
                 if (jlPlayerVideo.muted) {
                     jlPlayerVideo.muted = false;
-                }
 
-                jlPlayerVideo.volume = value;
+                }
+                      jlPlayerVideo.volume = value;
                 sliderVol.style.width = (value * 100) + '%';
 
                 volTarget = (jlPlayerVideo.volume > 0 ? jlPlayerVideo.volume : 1);
                 if (jlPlayerVideo.volume > 0) {
                     if (jlPlayerVideo.volume >= 0.5) {
+                        if (icoVol != 'volhigh') {
+                            jlPlayerBtnVol.innerHTML = svgIcos.volhigh;
+                            icoVol = 'volhigh';
+                        }
+                }
+                     // Atualizar o sistema de volume
+            function updateVolume() {
+                if (jlPlayerAudio.muted) {
+                    jlPlayerAudio.muted = false;
+                }
+                jlPlayerAudio.volume = value;
+                sliderVol.style.width = (value * 100) + '%';
+
+                volTarget = (jlPlayerAudio.volume > 0 ? jlPlayerVideo.volume : 1);
+                if (jlPlayerAudio.volume > 0) {
+                    if (jlPlayerAudio.volume >= 0.5) {
+                        if (icoVol != 'volhigh') {
+                            jlPlayerBtnVol.innerHTML = svgIcos.volhigh;
+                            icoVol = 'volhigh';
+                        }
+                         // Atualizar o sistema de volume
+            function updateVolume() {
+                if (jlPlayerImagem.muted) {
+                    jlPlayerImagem.muted = false;
+                }
+                jlPlayerAudio.volume = value;
+                sliderVol.style.width = (value * 100) + '%';
+
+                volTarget = (jlPlayerImagem.volume > 0 ? jlPlayerImagem.volume : 1);
+                if (jlPlayerImagem.volume > 0) {
+                    if (jlPlayerImagem.volume >= 0.5) {
+                        if (icoVol != 'volhigh') {
+                            jlPlayerBtnVol.innerHTML = svgIcos.volhigh;
+                            icoVol = 'volhigh';
+                        }
+               // Atualizar o sistema de volume
+            function updateVolume() {
+                if (jlPlayerDocumento.muted) {
+                    jlPlayerDocumento.muted = false;
+                }
+                jlPlayerAudio.volume = value;
+                sliderVol.style.width = (value * 100) + '%';
+
+                volTarget = (jlPlayerDocumento.volume > 0 ? jlPlayerDocumento.volume : 1);
+                if (jlPlayerDocumento.volume > 0) {
+                    if (jlPlayerImagem.volume >= 0.5) {
+                        if (icoVol != 'volhigh') {
+                            jlPlayerBtnVol.innerHTML = svgIcos.volhigh;
+                            icoVol = 'volhigh';
+                        }
+
+                        // Atualizar o sistema de volume
+            function updateVolume() {
+                if (jlPlayerJogo.muted) {
+                    jlPlayerAudio.muted = false;
+                }
+                jlPlayerJogo.volume = value;
+                sliderVol.style.width = (value * 100) + '%';
+
+                volTarget = (jlPlayerJogo.volume > 0 ? jlPlayerJogo.volume : 1);
+                if (jlPlayerJogo.volume > 0) {
+                    if (jlPlayerImagem.volume >= 0.5) {
                         if (icoVol != 'volhigh') {
                             jlPlayerBtnVol.innerHTML = svgIcos.volhigh;
                             icoVol = 'volhigh';
@@ -400,6 +639,31 @@ function playerExecute(){
                 cM = Math.floor((value * jlPlayerVideo.duration) / 60),
                 cS = Math.floor((((value * jlPlayerVideo.duration) / 60) % 1) * 60);
 
+                var ClientRect = jlPlayerProgress.getBoundingClientRect(),
+                value = (clientX - ClientRect.left) / rangeSeeker.clientWidth,
+                cH = Math.floor((value * jlPlayerAudio.duration) / 3600),
+                cM = Math.floor((value * jlPlayerAudio.duration) / 60),
+                cS = Math.floor((((value * jlPlayerAudio.duration) / 60) % 1) * 60);
+
+               var ClientRect = jlPlayerProgress.getBoundingClientRect(),
+                value = (clientX - ClientRect.left) / rangeSeeker.clientWidth,
+                cH = Math.floor((value * jlPlayerDocumento.duration) / 3600),
+                cM = Math.floor((value * jlPlayerDocumento.duration) / 60),
+                cS = Math.floor((((value * jlPlayerDocumento.duration) / 60) % 1) * 60);
+
+                var ClientRect = jlPlayerProgress.getBoundingClientRect(),
+                value = (clientX - ClientRect.left) / rangeSeeker.clientWidth,
+                cH = Math.floor((value * jlPlayerImagem.duration) / 3600),
+                cM = Math.floor((value * jlPlayerImagem.duration) / 60),
+                cS = Math.floor((((value * jlPlayerImagem.duration) / 60) % 1) * 60);
+
+                
+                var ClientRect = jlPlayerProgress.getBoundingClientRect(),
+                value = (clientX - ClientRect.left) / rangeSeeker.clientWidth,
+                cH = Math.floor((value * jlPlayerJogo.duration) / 3600),
+                cM = Math.floor((value * jlPlayerJogo.duration) / 60),
+                cS = Math.floor((((value * jlPlayerJogo.duration) / 60) % 1) * 60);
+
             currentTimeTooltip.textContent = convertTimer(cH, cM, cS);
             currentTimeTooltip.style.left = (value * 100) + '%';
 
@@ -417,6 +681,105 @@ function playerExecute(){
                 default:
                     updateSeeker();
             }
+            break;
+            case 'touchmove':
+                progressVideo.style.width = (value * 100) + '%';
+                updateSeeker();
+                break;
+            default:
+                updateSeeker();
+
+
+                case 'mousemove':
+                    if (sliderDrag) {
+                        progressAudio.style.width = (value * 100) + '%';
+                        updateSeeker();
+                    }
+                    break;
+                case 'touchmove':
+                    progressAudio.style.width = (value * 100) + '%';
+                    updateSeeker();
+                    break;
+                default:
+                    updateSeeker();
+            }
+            break;
+            case 'touchmove':
+                progressAudio.style.width = (value * 100) + '%';
+                updateSeeker();
+                break;
+            default:
+                updateSeeker();
+        }
+        
+
+        case 'mousemove':
+            if (sliderDrag) {
+                progressDocumento.style.width = (value * 100) + '%';
+                updateSeeker();
+            }
+            break;
+        case 'touchmove':
+            progressDocumento.style.width = (value * 100) + '%';
+            updateSeeker();
+            break;
+        default:
+            updateSeeker();
+    }
+    break;
+    case 'touchmove':
+        progressDocumento.style.width = (value * 100) + '%';
+        updateSeeker();
+        break;
+    default:
+        updateSeeker();
+}
+
+
+case 'mousemove':
+    if (sliderDrag) {
+        progressImagem.style.width = (value * 100) + '%';
+        updateSeeker();
+    }
+    break;
+case 'touchmove':
+    progressImagem.style.width = (value * 100) + '%';
+    updateSeeker();
+    break;
+default:
+    updateSeeker();
+}
+break;
+case 'touchmove':
+progressImagem.style.width = (value * 100) + '%';
+updateSeeker();
+break;
+default:
+updateSeeker();
+}
+
+
+case 'mousemove':
+    if (sliderDrag) {
+        progressJogo.style.width = (value * 100) + '%';
+        updateSeeker();
+    }
+    break;
+case 'touchmove':
+    progressJogo.style.width = (value * 100) + '%';
+    updateSeeker();
+    break;
+default:
+    updateSeeker();
+}
+break;
+case 'touchmove':
+progressJogo.style.width = (value * 100) + '%';
+updateSeeker();
+break;
+default:
+updateSeeker();
+}
 
             // Seta a nova posição do seeker
             function updateSeeker() {
@@ -424,6 +787,31 @@ function playerExecute(){
                 progressVideo.style.width = (value * 100) + '%';
                 jlPlayerVideo.currentTime = (value * jlPlayerVideo.duration);
             }
+                 // Seta a nova posição do seeker
+                 function updateSeeker() {
+                    rangeSeeker.value = (value * 100);
+                    progressAudio.style.width = (value * 100) + '%';
+                    jlPlayerAudio.currentTime = (value * jlPlayerAudio.duration);
+                }
+
+                           // Seta a nova posição do seeker
+                           function updateSeeker() {
+                            rangeSeeker.value = (value * 100);
+                            progressDocumento.style.width = (value * 100) + '%';
+                            jlPlayerDocumento.currentTime = (value * jlPlayerDocumento.duration);
+                        }
+                                   // Seta a nova posição do seeker
+                 function updateSeeker() {
+                    rangeSeeker.value = (value * 100);
+                    progressImagem.style.width = (value * 100) + '%';
+                    jlPlayerImagem.currentTime = (value * jlPlayerImagem.duration);
+                }
+                           // Seta a nova posição do seeker
+                           function updateSeeker() {
+                            rangeSeeker.value = (value * 100);
+                            progressJogo.style.width = (value * 100) + '%';
+                            jlPlayerJogo.currentTime = (value * jlPlayerJogo.duration);
+                        }
         }
 
         // Controle do botão de volume
@@ -436,6 +824,7 @@ function playerExecute(){
                 icoVol = 'volmute';
                 rangeVol.value = 0;
                 sliderVol.style.width = 0;
+            }
             } else {
                 jlPlayerVideo.muted = false;
                 jlPlayerVideo.volume = volTarget;
@@ -447,17 +836,149 @@ function playerExecute(){
                 } else {
                     jlPlayerBtnVol.innerHTML = svgIcos.vollow;
                     icoVol = 'vollow';
+
+
+                     // Controle do botão de volume
+        function muteAudio() {
+            if (!jlPlayerVideo.muted) {
+                volTarget = (jlPlayerAudio.volume > 0 ? jlPlayerAudio.volume : 1);
+                jlPlayerAudio.muted = true;
+                jlPlayerAudio.volume = 0;
+                jlPlayerBtnVol.innerHTML = svgIcos.volmute;
+                icoVol = 'volmute';
+                rangeVol.value = 0;
+                sliderVol.style.width = 0;
+            }
+            } else {
+                jlPlayerAudio.muted = false;
+                jlPlayerAudio.volume = volTarget;
+                rangeVol.value = volTarget;
+                sliderVol.style.width = (volTarget * 100) + '%';
+                if (jlPlayerAudio.volume >= 0.5) {
+                    jlPlayerBtnVol.innerHTML = svgIcos.volhigh;
+                    icoVol = 'volhigh';
+                } else {
+                    jlPlayerBtnVol.innerHTML = svgIcos.vollow;
+                    icoVol = 'vollow';
                 }
+                 // Controle do botão de volume
+        function muteAudio() {
+            if (!jlPlayerDocumento.muted) {
+                volTarget = (jlPlayerDocumento.volume > 0 ? jlPlayerDocumento.volume : 1);
+                jlPlayerDocumento.muted = true;
+                jlPlayerDocumento.volume = 0;
+                jlPlayerBtnVol.innerHTML = svgIcos.volmute;
+                icoVol = 'volmute';
+                rangeVol.value = 0;
+                sliderVol.style.width = 0;
+            }
+            } else {
+                jlPlayerDocumento.muted = false;
+                jlPlayerDocumento.volume = volTarget;
+                rangeVol.value = volTarget;
+                sliderVol.style.width = (volTarget * 100) + '%';
+                if (jlPlayerDocumento.volume >= 0.5) {
+                    jlPlayerBtnVol.innerHTML = svgIcos.volhigh;
+                    icoVol = 'volhigh';
+                } else {
+                    jlPlayerBtnVol.innerHTML = svgIcos.vollow;
+                    icoVol = 'vollow';
+                }
+                 // Controle do botão de volume
+        function muteAudio() {
+            if (!jlPlayerImagem.muted) {
+                volTarget = (jlPlayerAudio.volume > 0 ? jlPlayerImagem.volume : 1);
+                jlPlayerImagem.muted = true;
+                jlPlayerImagem.volume = 0;
+                jlPlayerBtnVol.innerHTML = svgIcos.volmute;
+                icoVol = 'volmute';
+                rangeVol.value = 0;
+                sliderVol.style.width = 0;
+            }
+            } else {
+                jlPlayerImagem.muted = false;
+                jlPlayerImagem.volume = volTarget;
+                rangeVol.value = volTarget;
+                sliderVol.style.width = (volTarget * 100) + '%';
+                if (jlPlayerImagem.volume >= 0.5) {
+                    jlPlayerBtnVol.innerHTML = svgIcos.volhigh;
+                    icoVol = 'volhigh';
+                } else {
+                    jlPlayerBtnVol.innerHTML = svgIcos.vollow;
+                    icoVol = 'vollow';
+                }
+                 // Controle do botão de volume
+        function muteAudio() {
+            if (!jlPlayerJogo.muted) {
+                volTarget = (jlPlayerJogo.volume > 0 ? jlPlayerJogo.volume : 1);
+                jlPlayerJogo.muted = true;
+                jlPlayerJogo.volume = 0;
+                jlPlayerBtnVol.innerHTML = svgIcos.volmute;
+                icoVol = 'volmute';
+                rangeVol.value = 0;
+                sliderVol.style.width = 0;
+            }
+            } else {
+                jlPlayerJogo.muted = false;
+                jlPlayerJogo.volume = volTarget;
+                rangeVol.value = volTarget;
+                sliderVol.style.width = (volTarget * 100) + '%';
+                if (jlPlayerJogo.volume >= 0.5) {
+                    jlPlayerBtnVol.innerHTML = svgIcos.volhigh;
+                    icoVol = 'volhigh';
+                } else {
+                    jlPlayerBtnVol.innerHTML = svgIcos.vollow;
+                    icoVol = 'vollow';
+                }
+                }
+                
             }
         }
 
-        // Ações de play e pause do vídeo
+        // Ações de play e pause do Audio
+        function playAudio(evt) {
+
+            var e = String(evt.target.tagName);
+            if (isTouch && e.toLowerCase() === 'audio') {
+                return false;
+            }
+                    }
+                } else {
+                    played = false;
+                    jlPlayerAudio.pause();
+                    jlPlayerBtnPlay.innerHTML = svgIcos.play;
+                    jlPlayerBtnPlayCenter.innerHTML = svgIcos.playc;
+                    if (!isTouch) {
+                        jlPlayerBtnPlayCenter.style.display = 'block';
+                    }
+                }
+            } else {
+                played = true;
+                jlPlayerAudio.play();
+                jlPlayerBtnPlay.innerHTML = svgIcos.pause;
+                jlPlayerBtnPlayCenter.innerHTML = svgIcos.pausec;
+                if (!isTouch) {
+                    jlPlayerBtnPlayCenter.style.display = 'none';
+                }
+
+            }
+        } else {
+            played = true;
+            jlPlayerVideo.play();
+            jlPlayerBtnPlay.innerHTML = svgIcos.pause;
+            jlPlayerBtnPlayCenter.innerHTML = svgIcos.pausec;
+            if (!isTouch) {
+                jlPlayerBtnPlayCenter.style.display = 'none';
+            }
+        }
+        // Ações de play e pause do Video
         function playVideo(evt) {
 
             var e = String(evt.target.tagName);
             if (isTouch && e.toLowerCase() === 'video') {
                 return false;
             }
+
 
             if (jlPlayerVideo.played.length != 0) {
                 if (jlPlayerVideo.paused) {
@@ -531,7 +1052,173 @@ function playerExecute(){
             // Remove evento click se existir touch
             if (isTouch) {
                 handler(jlPlayerVideo, 'click', playVideo, !1);
+
+            played = true;
+
+            //Duração total do Audio
+            var h = Math.floor(jlPlayerAudio.duration / 3600),
+                m = Math.floor(jlPlayerAudio.duration / 60),
+                s = Math.floor(((jlPlayerAudio.duration / 60) % 1) * 60);
+
+            // Usa o metodo convertTimer para setar a duração do Audio
+            jlPlayerTotalTime.textContent = convertTimer(h, m, s);
+
+            // CurrentTime
+            var cH = Math.floor(jlPlayerAudio.currentTime / 3600),
+                cM = Math.floor(jlPlayerAudio.currentTime / 60),
+                cS = Math.floor(((jlPlayerAudio.currentTime / 60) % 1) * 60);
+
+
+            // Usa o metodo convertTimer para setar a o tempo de andamento do vídeo
+            currentTimeTooltip.textContent = convertTimer(cH, cM, cS);
+
+            // Eventos de seeker
+            handler(jlPlayerProgress, 'mousedown mouseup mousemove touchstart touchmove', setSeeker, !0);
+
+            // Faz a leitura do track da primeira legenda
+            trackCaption = jlPlayerAudio.textTracks[0];
+
+            // Verifica se existra track de legenda
+            if (trackCaption) {
+                trackCaption.mode = activeCaption;
             }
+
+
+            // Eventos de player e pause
+            handler(jlPlayerBtnPlay, 'click', playAudio, !0);
+            handler(jlPlayerBtnPlayCenter, 'click', playAudio, !0);
+            handler(jlPlayerAudio, 'click touchstart', playAudio, !0);
+
+            // Remove evento click se existir touch
+            if (isTouch) {
+                handler(jlPlayerAudio, 'click', playAudio, !1);
+            }
+         // Chamado quando o vídeo pode ser reproduzido
+         function canplay(evt) {
+
+            played = true;
+
+            //Duração total do video
+            var h = Math.floor(jlPlayerDocumento.duration / 3600),
+                m = Math.floor(jlPlayerDocumento.duration / 60),
+                s = Math.floor(((jlPlayerDocumento.duration / 60) % 1) * 60);
+
+            // Usa o metodo convertTimer para setar a duração do vídeo
+            jlPlayerTotalTime.textContent = convertTimer(h, m, s);
+
+            // CurrentTime
+            var cH = Math.floor(jlPlayerDocumento.currentTime / 3600),
+                cM = Math.floor(jlPlayerDocumento.currentTime / 60),
+                cS = Math.floor(((jlPlayerDocumento.currentTime / 60) % 1) * 60);
+
+
+            // Usa o metodo convertTimer para setar a o tempo de andamento do vídeo
+            currentTimeTooltip.textContent = convertTimer(cH, cM, cS);
+
+            // Eventos de seeker
+            handler(jlPlayerProgress, 'mousedown mouseup mousemove touchstart touchmove', setSeeker, !0);
+
+            // Faz a leitura do track da primeira legenda
+            trackCaption = jlPlayerDocumento.textTracks[0];
+
+            // Verifica se existra track de legenda
+            if (trackCaption) {
+                trackCaption.mode = activeCaption;
+            }
+
+
+            // Eventos de player e pause
+            handler(jlPlayerBtnPlay, 'click', playDocumento, !0);
+            handler(jlPlayerBtnPlayCenter, 'click', playDocumento, !0);
+            handler(jlPlayerDocumento, 'click touchstart', playDocumento, !0);
+
+            // Remove evento click se existir touch
+            if (isTouch) {
+                handler(jlPlayerDocumento, 'click', playDocumento, !1);
+
+        }
+
+        played = true;
+
+            //Duração total do video
+            var h = Math.floor(jlPlayerImagem.duration / 3600),
+                m = Math.floor(jlPlayerImagem.duration / 60),
+                s = Math.floor(((jlPlayerImagem.duration / 60) % 1) * 60);
+
+            // Usa o metodo convertTimer para setar a duração do vídeo
+            jlPlayerTotalTime.textContent = convertTimer(h, m, s);
+
+            // CurrentTime
+            var cH = Math.floor(jlPlayerImagem.currentTime / 3600),
+                cM = Math.floor(jlPlayerImagem.currentTime / 60),
+                cS = Math.floor(((jlPlayerImagem.currentTime / 60) % 1) * 60);
+
+
+            // Usa o metodo convertTimer para setar a o tempo de andamento do vídeo
+            currentTimeTooltip.textContent = convertTimer(cH, cM, cS);
+
+            // Eventos de seeker
+            handler(jlPlayerProgress, 'mousedown mouseup mousemove touchstart touchmove', setSeeker, !0);
+
+            // Faz a leitura do track da primeira legenda
+            trackCaption = jlPlayerImagem.textTracks[0];
+
+            // Verifica se existra track de legenda
+            if (trackCaption) {
+                trackCaption.mode = activeCaption;
+            }
+
+
+            // Eventos de player e pause
+            handler(jlPlayerBtnPlay, 'click', playImagem, !0);
+            handler(jlPlayerBtnPlayCenter, 'click', playImagem, !0);
+            handler(jlPlayerImagem, 'click touchstart', playImagem, !0);
+
+            // Remove evento click se existir touch
+            if (isTouch) {
+                handler(jlPlayerImagem, 'click', playImagem, !1);
+
+        }
+
+        played = true;
+
+            //Duração total do video
+            var h = Math.floor(jlPlayerJogo.duration / 3600),
+                m = Math.floor(jlPlayerJogo.duration / 60),
+                s = Math.floor(((jlPlayerJogo.duration / 60) % 1) * 60);
+
+            // Usa o metodo convertTimer para setar a duração do vídeo
+            jlPlayerTotalTime.textContent = convertTimer(h, m, s);
+
+            // CurrentTime
+            var cH = Math.floor(jlPlayerJogo.currentTime / 3600),
+                cM = Math.floor(jlPlayerJogo.currentTime / 60),
+                cS = Math.floor(((jlPlayerJogo.currentTime / 60) % 1) * 60);
+
+
+            // Usa o metodo convertTimer para setar a o tempo de andamento do vídeo
+            currentTimeTooltip.textContent = convertTimer(cH, cM, cS);
+
+            // Eventos de seeker
+            handler(jlPlayerProgress, 'mousedown mouseup mousemove touchstart touchmove', setSeeker, !0);
+
+            // Faz a leitura do track da primeira legenda
+            trackCaption = jlPlayerJogo.textTracks[0];
+
+            // Verifica se existra track de legenda
+            if (trackCaption) {
+                trackCaption.mode = activeCaption;
+            }
+
+
+            // Eventos de player e pause
+            handler(jlPlayerBtnPlay, 'click', playJogo, !0);
+            handler(jlPlayerBtnPlayCenter, 'click', playJogo, !0);
+            handler(jlPlayerJogo, 'click touchstart', playJogo, !0);
+
+            // Remove evento click se existir touch
+            if (isTouch) {
+                handler(jlPlayerJogo, 'click', playJogo, !1);
 
         }
 
@@ -639,10 +1326,41 @@ function playerExecute(){
             document.getElementsByClassName('jlplayer-video')[i].id = idElement;
             new jlPlayer(idElement);
         }
-
     }
 
+    totalJLPlayer = document.getElementsByClassName('jlplayer-audio').length;
+    if (totalJLPlayer > 0) {
 
+        for (var i = 0; i < totalJLPlayer; i++) {
+            idElement = 'jlplayer-' + Math.floor(Math.random() * 1000);
+            document.getElementsByClassName('jlplayer-documento')[i].id = idElement;
+            new jlPlayer(idElement);
+        }
+        totalJLPlayer = document.getElementsByClassName('jlplayer-documento').length;
+        if (totalJLPlayer > 0) {
+    
+            for (var i = 0; i < totalJLPlayer; i++) {
+                idElement = 'jlplayer-' + Math.floor(Math.random() * 1000);
+                document.getElementsByClassName('jlplayer-documento')[i].id = idElement;
+                new jlPlayer(idElement);
+            }
+    }
+    totalJLPlayer = document.getElementsByClassName('jlplayer-imagem').length;
+    if (totalJLPlayer > 0) {
+
+        for (var i = 0; i < totalJLPlayer; i++) {
+            idElement = 'jlplayer-' + Math.floor(Math.random() * 1000);
+            document.getElementsByClassName('jlplayer-jogo')[i].id = idElement;
+            new jlPlayer(idElement);
+        }
+        totalJLPlayer = document.getElementsByClassName('jlplayer-jogo').length;
+        if (totalJLPlayer > 0) {
+    
+            for (var i = 0; i < totalJLPlayer; i++) {
+                idElement = 'jlplayer-' + Math.floor(Math.random() * 1000);
+                document.getElementsByClassName('jlplayer-jogo')[i].id = idElement;
+                new jlPlayer(idElement);
+            }
 
       var video = document.getElementById("playerPrincipal");
 
@@ -661,6 +1379,70 @@ function playerExecute(){
            }, 5500);
 };
 
+var audio = document.getElementById("playerPrincipal");
+
+audio.addEventListener('loadedmetadata', function() {
+    if (audio.buffered.length === 0) return;
+    const bufferedSeconds = audio.buffered.end(0) - audio.buffered.start(0);
+    setTimeout(function(){
+        document.getElementById('playerPrincipal').setAttribute('poster','https://s3.amazonaws.com/content.newsok.com/newsok/images/mobile/play_button.png');
+        console.log("OK");
+     }, 3500);
+  });
+
+setTimeout(function(){
+        document.getElementById('playerPrincipal').setAttribute('poster','https://s3.amazonaws.com/content.newsok.com/newsok/images/mobile/play_button.png');
+        console.log("OK");
+     }, 5500);
+};
+var documento = document.getElementById("playerPrincipal");
+
+documento.addEventListener('loadedmetadata', function() {
+    if (documento.buffered.length === 0) return;
+    const bufferedSeconds = documento.buffered.end(0) - documento.buffered.start(0);
+    setTimeout(function(){
+        document.getElementById('playerPrincipal').setAttribute('poster','https://s3.amazonaws.com/content.newsok.com/newsok/images/mobile/play_button.png');
+        console.log("OK");
+     }, 3500);
+  });
+
+setTimeout(function(){
+        document.getElementById('playerPrincipal').setAttribute('poster','https://s3.amazonaws.com/content.newsok.com/newsok/images/mobile/play_button.png');
+        console.log("OK");
+     }, 5500);
+};
+var imagem = document.getElementById("playerPrincipal");
+
+imagem.addEventListener('loadedmetadata', function() {
+    if (imagem.buffered.length === 0) return;
+    const bufferedSeconds = imagem.buffered.end(0) - imagem.buffered.start(0);
+    setTimeout(function(){
+        document.getElementById('playerPrincipal').setAttribute('poster','https://s3.amazonaws.com/content.newsok.com/newsok/images/mobile/play_button.png');
+        console.log("OK");
+     }, 3500);
+  });
+
+setTimeout(function(){
+        document.getElementById('playerPrincipal').setAttribute('poster','https://s3.amazonaws.com/content.newsok.com/newsok/images/mobile/play_button.png');
+        console.log("OK");
+     }, 5500);
+};
+var jogo = document.getElementById("playerPrincipal");
+
+jogo.addEventListener('loadedmetadata', function() {
+    if (jogo.buffered.length === 0) return;
+    const bufferedSeconds = jogo.buffered.end(0) - jogo.buffered.start(0);
+    setTimeout(function(){
+        document.getElementById('playerPrincipal').setAttribute('poster','https://s3.amazonaws.com/content.newsok.com/newsok/images/mobile/play_button.png');
+        console.log("OK");
+     }, 3500);
+  });
+
+setTimeout(function(){
+        document.getElementById('playerPrincipal').setAttribute('poster','https://s3.amazonaws.com/content.newsok.com/newsok/images/mobile/play_button.png');
+        console.log("OK");
+     }, 5500);
+};
 
 //https://www.wallpaperup.com/uploads/wallpapers/2013/03/27/65419/8e76ae566eb4efe15f0e967029b57893-700.jpg
 //https://thumbs.gfycat.com/HelpfulTinyArkshell-size_restricted.gif

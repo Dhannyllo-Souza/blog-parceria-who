@@ -13,6 +13,7 @@ var temp11 = document.getElementById("temporada11");
 var temp12 = document.getElementById("temporada12");
 var temp13 = document.getElementById("temporada13");
 
+let idiom = "dub";
 
 
 function mudaDubLeg(idiom){
@@ -2501,7 +2502,6 @@ var temp13Leg = `<img id="temp1" class="image-temp" style="width: 99%; max-width
           temp11.innerHTML = temp11Dub;
           temp12.innerHTML = temp12Dub;
           temp13.innerHTML = temp13Dub;
-          history.pushState({}, null, "https://bad-wolf-brasil.web.app/?dw=dublado");
           dublado = true;
           legendado = false;
 	}else{
@@ -2520,7 +2520,6 @@ var temp13Leg = `<img id="temp1" class="image-temp" style="width: 99%; max-width
           temp11.innerHTML = temp11Leg;
           temp12.innerHTML = temp12Leg;
           temp13.innerHTML = temp13Leg;
-          history.pushState({}, null, "https://bad-wolf-brasil.web.app/?dw=legendado");
           legendado = true;
           dublado = false;
 	}

@@ -3,6 +3,9 @@ var myInput = document.getElementById('txtInput');
 var myBtn = document.getElementById('alphaBtn');
 var myIcon = document.getElementById('iconSend');
 var ennd = true;
+var showMeta = document.querySelector("[name='dadosCache']");
+
+showMeta.value = "";
 
     var addFala = 2;
     var speedText = 90;

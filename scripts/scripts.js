@@ -52,20 +52,6 @@ function openPlayer(){
     playerReload();
     p.className = "allplayerOff";
     onPlay = false;
-
-      if(legendado == true){
-        history.pushState({}, null, "https://bad-wolf-brasil.web.app/?dw=legendado");
-        legendado = true;
-        dublado = false;
-      }
-      if (dublado == true){
-        history.pushState({}, null, "https://bad-wolf-brasil.web.app/?dw=dublado");
-        dublado = true;
-        legendado = false;
-      }
-      if (dublado == false && legendado == false){
-        history.pushState({}, null, "https://bad-wolf-brasil.web.app/");
-      }
   }
 }
 
@@ -560,7 +546,6 @@ function siteLink(x){
                            <button onclick='informs(this.name);' title='Player info' name='drive.google.com\n\n>> os links possuem limite de visualizações diárias, resultando ocasionalmente em erros. Mas você ainda poderá baixar o episódio ou selecionar outro player do site.' class='combx'>Info</button>
                            <button onclick="copiarURL('https://bad-wolf-brasil.web.app/')" title='Copiar link' class='combx'>Copy</button>
                            <button class='r2' title='Fechar' onclick='openPlayer()'><i class='bi bi-x-lg'></i></button>`;
-            alterar_url("https://bad-wolf-brasil.web.app");
         }else if(mg1 > -1){
           player = "mega";
           if(mg1 > -1){
@@ -769,9 +754,7 @@ function siteLink(x){
 
     }else{
       alert("Link vazio ou inválido.");
-      history.pushState({}, null, 'https://bad-wolf-brasil.web.app/');
    }
-   //alterar_url("https://bad-wolf-brasil.web.app/");
 }
 
 
